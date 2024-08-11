@@ -15,6 +15,15 @@ const config: Config = {
       },
       backgroundColor: {
         "dark-indigo": "#2f2b3a",
+        "dark-green": "#20696e",
+        "light-green": "#72dccf",
+        'white-10': 'rgba(255, 255, 255, 0.1)',
+        'white-20': 'rgba(255, 255, 255, 0.2)',
+        'white-30': 'rgba(255, 255, 255, 0.3)',
+        'white-50': 'rgba(255, 255, 255, 0.5)',
+      },
+      textColor: {
+        "light-green": "#72dccf",
       }
     },
   },
