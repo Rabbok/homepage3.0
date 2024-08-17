@@ -1,35 +1,63 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Nav = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
-    const handleMouseEnter = (index: any) => {
-        setHoveredIndex(index);
-    };
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = document.querySelectorAll('section');
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
 
-    const handleMouseLeave = () => {
-        setHoveredIndex(null);
-    };
+            let newIndex = 0;
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollY + windowHeight / 2 >= sectionTop && scrollY + windowHeight / 2 < sectionTop + sectionHeight) {
+                    newIndex = index;
+                }
+            });
+
+            setActiveIndex(newIndex);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const items = [
-        { text: 'ABOUT', href: '#' },
-        { text: 'EXPERIENCE', href: '#' },
-        { text: 'PROJECTS', href: '#' }
+        { text: 'ABOUT', href: '#about' },
+        { text: 'EXPERIENCE', href: '#experience' },
+        { text: 'PROJECTS', href: '#projects' }
     ];
+
+    const handleNavClick = (href: string) => {
+        const section = document.querySelector(href);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <nav>
             {items.map((item, index) => {
+                const isActive = activeIndex === index || hoveredIndex === index;
                 const lineStyle = {
-                    width: hoveredIndex === index ? '4rem' : '2rem',
-                    backgroundColor: hoveredIndex === index ? 'white' : '#6b7280',
+                    width: isActive ? '4rem' : '2rem',
+                    backgroundColor: isActive ? 'white' : '#6b7280',
                     transition: 'all 0.3s ease',
                 };
 
                 const textStyle = {
-                    color: hoveredIndex === index ? 'white' : '#6b7280',
+                    color: isActive ? 'white' : '#6b7280',
                     transition: 'color 0.3s ease',
                 };
 
@@ -37,13 +65,14 @@ const Nav = () => {
                     <div
                         key={index}
                         className="flex items-center cursor-pointer"
-                        onMouseEnter={() => handleMouseEnter(index)}
-                        onMouseLeave={handleMouseLeave}
+                        onClick={() => handleNavClick(item.href)}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
                     >
                         <div style={lineStyle} className="h-1"></div>
-                        <a href={item.href} style={textStyle} className="font-bold ml-3">
+                        <span style={textStyle} className="font-bold ml-3">
                             {item.text}
-                        </a>
+                        </span>
                     </div>
                 );
             })}

@@ -1,6 +1,6 @@
 const Description = () => {
     return (
-        <div className="mb-32">
+        <div>
             <p className="text-gray-500 text-l font-medium">I'm a junior front-end developer from Ukraine. I have a strong grasp of HTML,
 CSS, JavaScript, TypeScript, React, and SASS. I have honed my skills by working
 on various personal projects, which have allowed me to apply and expand my
