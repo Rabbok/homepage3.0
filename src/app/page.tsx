@@ -13,10 +13,9 @@ export default function Home() {
     const glow = document.getElementById("glow");
 
     const handleMouseMove = (event: MouseEvent) => {
-      console.log('mouse move event');
       if (glow) {
-        glow.style.left = `${event.clientX - glow.offsetWidth / 2}px`;
-        glow.style.top = `${event.clientY - glow.offsetHeight / 2}px`;
+        glow.style.left = `${event.pageX - glow.offsetWidth / 2}px`;
+        glow.style.top = `${event.pageY - glow.offsetHeight / 2}px`;
       }
     };
 
@@ -27,31 +26,34 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative grid grid-cols-2 min-h-screen flex-row items-start justify-between bg-dark-indigo">
+    <main className="relative min-h-screen bg-dark-indigo ">
       <div id="glow" className="w-24 h-24 bg-white-half rounded-full pointer-events-none"></div>
+      
+      <div className="grid lg:grid-cols-2 mx-auto flex-row justify-between max-w-7xl items-start">
+        <div className="sticky top-0 h-screen mx-auto min-h-screen max-w-screen-xl px-6 py-20 font-sans md:px-12 lg:px-24 lg:py-20">
+          <Hero />
+          <Nav />
+          <SocialMedia />
+        </div>
 
-      <div className="sticky top-0 h-screen mx-auto min-h-screen max-w-screen-xl px-6 py-20 font-sans md:px-12 lg:px-24 lg:py-20">
-        <Hero />
-        <Nav />
-        <SocialMedia />
-      </div>
+        <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
 
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
-        
-        <section id="about" className="pb-32 py-24">
-          <Description/>
-        </section>
+          <section id="about" className="pb-32 py-24">
+            <Description />
+          </section>
 
-        <section id="experience" className="pb-20">
-          <ExperinceBlock title="Open source" text="Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility." tags={["JavaScript", "React"]}/>
-          <ExperinceBlock title="Front-End Developer" text="At Bright Future Technologies, I contributed to the development of interactive web applications using Angular and TypeScript. My role involved building user-friendly web pages that were integral to the successful launch of a new product. I focused on creating clean, maintainable code while continuously improving my skills in front-end technologies and best practices. Through my efforts, I helped the team deliver a high-quality product on time, while also gaining valuable experience in working within a dynamic development environment." tags={["JavaScript", "React"]}/>
-        </section>
+          <section id="experience" className="pb-20">
+            <ExperinceBlock date="2023 - PRESENT" title="Freelance Front-End Development Experience" text="In my work as a freelance front-end developer, i’ve designed and built custom websites that are both responsive and user-friendly, focusing on creating interfaces that are visually appealing and easy to navigate. Throughout these projects, I’ve collaborated closely with clients to understand their needs, provide updates, and deliver high-quality results. This experience has allowed me to refine my front-end skills and manage projects effectively." />
+            <ExperinceBlock date="2023 - 2024" title="Open Source Contributions" text="In my experience with open source projects on GitHub, I’ve contributed by adding new features, fixing bugs, and improving the overall functionality of various projects. Additionally, I’ve engaged with the community by participating in discussions and reviews, which has helped me collaborate effectively with other contributors and maintainers." />
+            <ExperinceBlock date="2022 - 2023" title="Self-Learning & Online Courses" text="Throughout my journey in front-end development, I have actively pursued self-learning and completed a range of online courses to enhance my skills and knowledge. These courses have covered various topics, including TypeScript, Next.js, Tailwind CSS, and Redux, enabling me to stay up-to-date with industry trends and best practices." />
+          </section>
 
-        <section id="projects" className="min-h-96">
-          <Project title="Jammming" text="Jammming is an application designed to conveniently save tracks from the Spotify platform into playlists. With Jammming, users can create and manage personalized music collections on Spotify, making the process of saving tracks more organized and user-friendly."/>
-          <Project title="Jammming" text="Jammming is an application designed to conveniently save tracks from the Spotify platform into playlists. With Jammming, users can create and manage personalized music collections on Spotify, making the process of saving tracks more organized and user-friendly."/>
-          <Project title="Jammming" text="Jammming is an application designed to conveniently save tracks from the Spotify platform into playlists. With Jammming, users can create and manage personalized music collections on Spotify, making the process of saving tracks more organized and user-friendly."/>
-        </section>
+          <section id="projects" className="min-h-96">
+            <Project imageName="image (2).png" title="Finuncle" text="Finuncle is a comprehensive budget management platform designed to help users efficiently track and plan their finances. The site features powerful tools, including SIP, CAGR, and EMI calculators, allowing users to make informed financial decisions and optimize their investment strategies." tags={["JavaScript", "React", "API", "Jest", "Git"]} />
+            <Project imageName="image (5).png" title="Homepage" text="This homepage serves as the gateway to my portfolio, offering a clear and engaging introduction to my work. It features a contemporary design with easy navigation to explore my projects, skills, and professional experience." tags={["Next.js", "TypeScript", "Tailwind CSS", "Git"]} />
+            <Project imageName="image (4).png" title="Jammming" text="Jammming is an application designed to conveniently save tracks from the Spotify platform into playlists. With Jammming, users can create and manage personalized music collections on Spotify, making the process of saving tracks more organized and user-friendly." tags={["Next.js", "TypeScript", "SASS", "Git", "API"]} />
+          </section>
+        </div>
       </div>
     </main>
   );

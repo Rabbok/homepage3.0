@@ -24,6 +24,7 @@ const config: Config = {
       },
       textColor: {
         "light-green": "#72dccf",
+        "turquoise": "#40E0D0",
       }
     },
   },

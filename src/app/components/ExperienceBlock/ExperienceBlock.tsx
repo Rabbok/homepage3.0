@@ -1,23 +1,16 @@
 type ExperienceBlockProps = {
     title: string;
     text: string;
-    tags: string[];
+    date: string;
 };
 
-const ExperienceBlock = ({ title, text, tags }: ExperienceBlockProps) => {
+const ExperienceBlock = ({ title, text, date}: ExperienceBlockProps) => {
     return (
-        <div className="min-h-40 w-full mb-8 flex justify-center gap-6 p-5 rounded-l hover:bg-white-10">
-            <p className="text-gray-500 text-l font-medium w-40">2024 - PRESENT</p>
-            <div>
-                <p className="text-white font-medium text-xl mb-3">{title}</p>
+        <div className="cursor-pointer relative min-h-40 w-full max-w-4xl mb-8 flex justify-center gap-6 p-5 rounded-l hover:bg-[#1c1b29]/10 hover:shadow-[0_0_2px_1px_rgba(255,255,255,0.1),0_0_4px_2px_rgba(255,255,255,0.1)] group">
+            <p className="text-gray-500 text-l font-medium w-1/3">{date}</p>
+            <div className="w-2/3">
+                <p className="text-white font-medium text-xl mb-3 group-hover:text-teal-300">{title}</p>
                 <p className="text-gray-500 text-l font-medium">{text}</p>
-                <div className="flex justify-start">
-                    {tags.map((tag: string, index: number) => (
-                        <div key={index} className="bg-dark-green w-20 h-5 rounded-xl m-8 ml-0 mr-4 flex items-center justify-center">
-                            <p className="text-sm text-light-green text-center font-bold">{tag}</p>
-                        </div>
-                    ))}
-                </div>
             </div>
         </div>
     );
