@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const Nav = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,7 +47,7 @@ const Nav = () => {
     };
 
     return (
-        <nav>
+        <nav className="hidden lg:block">
             {items.map((item, index) => {
                 const isActive = activeIndex === index || hoveredIndex === index;
                 const lineStyle = {
