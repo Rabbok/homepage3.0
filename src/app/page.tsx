@@ -30,13 +30,13 @@ export default function Home() {
       <div id="glow" className="hidden md:block md:absolute w-24 h-24 bg-white-half rounded-full pointer-events-none"></div>
       
       <div className="grid h-1/2 lg:grid-cols-2 md:grid-cols-1 mx-auto flex-row justify-between max-w-7xl items-start">
-        <div className="lg:sticky top-0 lg:h-screen lg:min-h-screen max-w-screen-xl px-6 pt-10 pb-0 font-sans md:px-12 md:px-24 md:py-20">
+        <div className="lg:sticky top-0 lg:h-screen lg:min-h-screen max-w-screen-xl px-6 pt-10 pb-0 font-sans lg:px-24 lg:py-20">
           <Hero />
           <Nav />
           <SocialMedia />
         </div>
 
-        <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-0 font-sans md:px-12 md:py-20 md:px-24 md:py-0">
+        <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-0 font-sans md:py-0">
 
           <section id="about" className="pb-32 py-24">
             <p className="sticky top-0 md:hidden text-white font-medium text-base py-2 mb-2 bg-dark-indigo z-10">Description</p>
